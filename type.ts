@@ -18,7 +18,7 @@ let f: unknown
 
 // 尽管unknow具有和any相同的可以被赋予任意类型值的特性，但它无法给其他类型变量赋值
 f = "hello"
-// e = f;
+e = f
 
 // 然而unknown实际上是一个类型的“安全缓冲区”，在确定类型的前提下，可以赋值给其他类型变量
 if (typeof f == "string") {
