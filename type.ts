@@ -44,3 +44,36 @@ const fn = (): void => {
 const fn2 = (): never => {
   throw new Error("this is a error")
 }
+
+// {} 用来指定对象中可以包含的属性,如 {name:string}
+
+let obj: { name: string };
+
+obj = { name: 'liao' };
+
+obj = {}; //  为空则报错，必须要传入name
+
+// 但是上面的写法同时也限定了只能对象中插入name属性，不能再多，多了就会报错
+obj = { name: 'aaa', age: 11 }
+
+// 对于这种只要求传入特定属性，其余属性不论的需求，可以这样传入
+
+let obj1: { name: string, [propName: string]: any }
+// 这种写法就相当于是只有name是必传的，其余的属性可传可不传
+obj1 = { name: 'aaa', age: 11 }
+
+// 而对于函数，这种写法也限定了传入参数和返回的格式，后面的省略参数则是拓展参数，保证函数可以传入不止a和b两个参数
+let fn3: (a: number, b: number, ...rest: any) => number;
+fn3 = (a, b, c: string) => (a + b)
+
+// 数组声明
+/**
+ * type[]
+ * 或
+ * Array<type>
+ */
+
+let arr: number[]
+let arr2: Array<number>
+
+// Tuple（元组），固定长度的数组
